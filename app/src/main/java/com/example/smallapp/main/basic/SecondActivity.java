@@ -17,11 +17,12 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
     Button[] buttons = new Button[9];  // Array to store buttons
     boolean isPlayerXTurn = true;  // True for player X, false for player O
     int turnCount = 0;  // Count number of turns
-
+     String player1Name;
+     String player2Name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_second);
 
         // Initialize buttons and set onClick listeners
         for (int i = 0; i < buttons.length; i++) {
@@ -32,7 +33,9 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
         }
         Intent intent = getIntent();
         String player1 = intent.getStringExtra("player1");
+        player1Name=player1;
         String player2 = intent.getStringExtra("player2");
+        player2Name = player2;
         TextView playerNames = findViewById(R.id.textView2);
         if (player1!=null && player2!=null){
             playerNames.setText(player1.toString()+"  VS  "+player2.toString());}
@@ -64,9 +67,9 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
         // Check for a winner
         if (checkForWinner()) {
             if (isPlayerXTurn) {
-                showToast("Player O wins!");
+                showToast(player2Name +" wins!");
             } else {
-                showToast("Player X wins!");
+                showToast(player1Name+" wins!");
             }
             resetGame();
         } else if (turnCount == 9) {

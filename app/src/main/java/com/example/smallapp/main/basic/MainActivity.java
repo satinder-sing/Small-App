@@ -22,24 +22,25 @@ public class MainActivity extends AppCompatActivity {
         EditText player1Name = findViewById(R.id.editTextText);
         EditText player2Name = findViewById(R.id.editTextText2);
         Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-        String p1 = player1Name.getText().toString();
-        String p2 = player2Name.getText().toString();
+
 
 
 
         btnProceed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String p1 = player1Name.getText().toString();
+                String p2 = player2Name.getText().toString();
                 if ((player2Name.getText().toString().trim().isEmpty())|| (player1Name.getText().toString().trim().isEmpty()))
                 {
                     showToast("Please Enter Both Player Names");
                 }
                 else {
-                    startActivity(intent);
                     if (!p1.isEmpty() && !p2.isEmpty()){
                         intent.putExtra("player1",p1);
                         intent.putExtra("player2",p2);
                     }
+                    startActivity(intent);
                 }
             }
         });
