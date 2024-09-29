@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.smallapp.R;
+import com.example.smallapp.main.db.TicTacDbHelper;
 
 public class SecondActivity extends AppCompatActivity implements View.OnClickListener {
     Button[] buttons = new Button[9];  // Array to store buttons
@@ -19,10 +20,15 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
     int turnCount = 0;  // Count number of turns
      String player1Name;
      String player2Name;
+
+    TicTacDbHelper dbHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
+
+        dbHelper = new TicTacDbHelper(this);
 
         // Initialize buttons and set onClick listeners
         for (int i = 0; i < buttons.length; i++) {
@@ -122,5 +128,11 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
     private void showToast(String message) {
         // Show a toast message
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        dbHelper.close();
     }
 }

@@ -3,6 +3,8 @@ package com.example.smallapp.main.basic;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.smallapp.main.db.TicTacContract;
+import com.example.smallapp.main.db.TicTacDbHelper;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,6 +25,7 @@ import com.example.smallapp.databinding.ActivitySplashBinding;
 import com.example.smallapp.R;
 
 public class splash_activity extends AppCompatActivity {
+    TicTacDbHelper dbHelper;
 
     protected void onCreate(Bundle savedInstance) {
 
@@ -44,6 +47,4 @@ public class splash_activity extends AppCompatActivity {
         },5000);
 
     }
-
-
 }

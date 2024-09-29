@@ -1,6 +1,8 @@
 package com.example.smallapp.main.basic;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,13 +12,17 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.smallapp.R;
+import com.example.smallapp.main.db.TicTacContract;
+import com.example.smallapp.main.db.TicTacDbHelper;
 
 public class MainActivity extends AppCompatActivity {
+    TicTacDbHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        dbHelper = new TicTacDbHelper(this);
 
         Button btnProceed = findViewById(R.id.button); // Replace 'button' with your actual button ID
         EditText player1Name = findViewById(R.id.editTextText);
@@ -39,6 +45,12 @@ public class MainActivity extends AppCompatActivity {
                     if (!p1.isEmpty() && !p2.isEmpty()){
                         intent.putExtra("player1",p1);
                         intent.putExtra("player2",p2);
+                        SQLiteDatabase db = dbHelper.getWritableDatabase();
+                        ContentValues values = new ContentValues();
+                        values.put(TicTacContract.Player.COL_NAME, p1);
+                        db.insert(TicTacContract.Player.TABLE_NAME, null, values);
+                        values.put(TicTacContract.Player.COL_NAME, p2);
+                        db.insert(TicTacContract.Player.TABLE_NAME, null, values);
                     }
                     startActivity(intent);
                 }
@@ -48,5 +60,11 @@ public class MainActivity extends AppCompatActivity {
     private void showToast(String message) {
         // Show a toast message
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        dbHelper.close();
     }
 }
