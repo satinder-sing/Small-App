@@ -60,7 +60,7 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
             return;
         }
 
-        // Set the text for the button and update the game state
+        // Set the text for the button and update status
         if (isPlayerXTurn) {
             clickedButton.setText("X");
         } else {
@@ -113,7 +113,7 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
             return true;
         }
 
-        return false;  // No winner yet
+        return false;
     }
 
     private void resetGame() {

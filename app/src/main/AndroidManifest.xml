@@ -45,7 +45,7 @@
             android:icon="@drawable/app_icon_your_company"
             android:label="@string/title_activity_main"
             android:logo="@drawable/app_icon_your_company"
-            android:screenOrientation="fullSensor" >
+            android:screenOrientation="portrait" >
         </activity>
     </application>
 
