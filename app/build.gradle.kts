@@ -46,6 +46,8 @@ dependencies {
     implementation(libs.navigation.ui)
     implementation ("com.airbnb.android:lottie:6.5.2")
     androidTestImplementation(libs.ext.junit)
+    implementation ("org.projectlombok:lombok:1.18.28")
+    annotationProcessor ("org.projectlombok:lombok:1.18.28")
     androidTestImplementation(libs.espresso.core)
     testImplementation(libs.junit)
 }

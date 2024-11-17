@@ -26,6 +26,10 @@
         android:theme="@style/Theme.SmallApp"
         tools:targetApi="31" >
         <activity
+            android:name=".main.basic.KillNoteRecyclerActivity"
+            android:exported="false"
+            android:theme="@style/Theme.SmallApp" />
+        <activity
             android:name=".main.basic.splash_activity"
             android:exported="true"
             android:theme="@style/Theme.SmallApp" >
@@ -39,12 +43,12 @@
             android:name=".main.basic.SecondActivity"
             android:exported="true" />
         <activity
+            android:name=".main.basic.AppSelectActivity"
+            android:exported="true" />
+        <activity
             android:name=".main.basic.MainActivity"
-
             android:exported="true"
-
             android:label="@string/title_activity_main"
-
             android:screenOrientation="portrait" >
         </activity>
     </application>

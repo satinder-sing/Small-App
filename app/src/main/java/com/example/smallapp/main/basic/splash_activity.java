@@ -32,7 +32,7 @@ public class splash_activity extends AppCompatActivity {
         super.onCreate(savedInstance);
         setContentView(R.layout.activity_splash);
 
-        Intent intent = new Intent(splash_activity.this,MainActivity.class);
+        Intent intent = new Intent(splash_activity.this,AppSelectActivity.class);
         TextView animText;
         animText = findViewById(R.id.textView3);
         Animation bouncemoving = AnimationUtils.loadAnimation(this,R.anim.bouncing_splash);
